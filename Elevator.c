@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-int * ChangeFloor(int start, int final, int floors[])
+void ChangeFloor(int start, int final, int floors[])
 {
 	
 	int difference = final - start;
@@ -16,6 +16,7 @@ int * ChangeFloor(int start, int final, int floors[])
 			printf("%d, ", floors[i-2]);
 		}	
 	}
+	
 	//increase if change in floors is positive
 	else
 	{
@@ -25,16 +26,6 @@ int * ChangeFloor(int start, int final, int floors[])
 		}
 	}
 	printf("Ding!\n");
-
-	//allocate memory to return the new floor value
-	
-	int * newFloor = (int*)calloc(1, sizeof(int));
-	* newFloor = final;
-	
-	return newFloor;
-	
-	//free memory
-	free(newFloor);
 }
 
 int main() 
@@ -61,17 +52,17 @@ int main()
 		//same floor chosen
 		else if(chosenFloor == currentFloor) 
 		{
-			printf("You're already on that floor!\n");;
+			printf("You're already on that floor!\n");
 		}
 		
 		//proper floor chosen
 		else
-		{
-			int * updatedFloor =  ChangeFloor(currentFloor, chosenFloor, floors);
-			currentFloor = * updatedFloor;
+		{	
+			ChangeFloor(currentFloor, chosenFloor, floors);
+			currentFloor = chosenFloor;
 		}
 
-		
+		//ride again if input is 'y'
 		printf("Would you like to change floors? Enter y if yes or any other key if not.\n");
 
 		scanf("%s", &again);

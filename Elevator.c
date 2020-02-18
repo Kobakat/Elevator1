@@ -55,7 +55,7 @@ int * AssignFloors(int numOfFloors)
 		scanf("%d", &chosenFloor);
 
 		//incorrect floor chosen
-		if(chosenFloor > 15 || chosenFloor < 0) 
+		if(chosenFloor > 15 || chosenFloor < 1) 
 		{
 			printf("That is not a valid floor! Choose between 1-15.\n");
 			j--;
